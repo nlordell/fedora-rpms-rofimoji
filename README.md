@@ -1,0 +1,3 @@
+# rofimoji
+
+The rofimoji package
