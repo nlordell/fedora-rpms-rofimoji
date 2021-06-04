@@ -5,7 +5,7 @@ Version:        5.1.0
 %forgemeta
 
 Name:           %{srcname}
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        A character picker for rofi 😀
 
 License:        MIT
@@ -57,6 +57,9 @@ sed -i -e '/^#!\//, 1d' picker/rofimoji.py
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 5.1.0-6
+- Rebuilt for Python 3.10
+
 * Tue Jun 01 2021 Major Hayden <major@mhtx.net> - 5.1.0-5
 - Package 'rofimoji' as a package without a python3-rofimoji subpackage.
 
