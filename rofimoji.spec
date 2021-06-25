@@ -1,11 +1,11 @@
 %global         srcname     rofimoji
-Version:        5.1.0
+Version:        5.2.0
 %global         forgeurl    https://github.com/fdw/rofimoji
 %global         tag         %{version}
 %forgemeta
 
 Name:           %{srcname}
-Release:        6%{?dist}
+Release:        1%{?dist}
 Summary:        A character picker for rofi 😀
 
 License:        MIT
@@ -57,6 +57,9 @@ sed -i -e '/^#!\//, 1d' picker/rofimoji.py
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Fri Jun 25 2021 Major Hayden <major@mhtx.net> - 5.2.0-1
+- New version.
+
 * Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 5.1.0-6
 - Rebuilt for Python 3.10
 
