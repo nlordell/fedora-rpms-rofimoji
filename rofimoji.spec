@@ -1,11 +1,11 @@
 %global         srcname     rofimoji
-Version:        5.1.0
+Version:        5.2.0
 %global         forgeurl    https://github.com/fdw/rofimoji
 %global         tag         %{version}
 %forgemeta
 
 Name:           %{srcname}
-Release:        6%{?dist}
+Release:        1%{?dist}
 Summary:        A character picker for rofi 😀
 
 License:        MIT
@@ -38,7 +38,7 @@ And you can use it to pick any weird character someone got into Unicode, too.
 
 %prep
 %autosetup -n %{srcname}-%{version}
-sed -i -e '/^#!\//, 1d' picker/rofimoji.py
+sed -i -e '/^#!\//, 1d' src/picker/rofimoji.py
 
 %generate_buildrequires
 %pyproject_buildrequires
@@ -48,6 +48,11 @@ sed -i -e '/^#!\//, 1d' picker/rofimoji.py
 
 %install
 %pyproject_install
+
+# Move the man page from the python3 sitelib directory
+mkdir -vp %{buildroot}%{_mandir}/man1
+mv %{buildroot}%{python3_sitelib}/share//man/man1/rofimoji.1 %{buildroot}%{_mandir}/man1
+
 %pyproject_save_files picker
 
 %files -n %{srcname} -f %{pyproject_files}
@@ -57,6 +62,9 @@ sed -i -e '/^#!\//, 1d' picker/rofimoji.py
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Sat Jun 26 2021 Major Hayden <major@mhtx.net> - 5.2.0-1
+- New version 5.2.0.
+
 * Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 5.1.0-6
 - Rebuilt for Python 3.10
 
