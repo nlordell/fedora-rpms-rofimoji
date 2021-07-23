@@ -5,7 +5,7 @@ Version:        5.2.0
 %forgemeta
 
 Name:           %{srcname}
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A character picker for rofi 😀
 
 License:        MIT
@@ -62,6 +62,9 @@ mv %{buildroot}%{python3_sitelib}/share//man/man1/rofimoji.1 %{buildroot}%{_mand
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 5.2.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
 * Sat Jun 26 2021 Major Hayden <major@mhtx.net> - 5.2.0-1
 - New version 5.2.0.
 
