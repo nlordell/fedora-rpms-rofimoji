@@ -1,11 +1,11 @@
 %global         srcname     rofimoji
-Version:        5.2.0
+Version:        5.3.0
 %global         forgeurl    https://github.com/fdw/rofimoji
 %global         tag         %{version}
 %forgemeta
 
 Name:           %{srcname}
-Release:        2%{?dist}
+Release:        1%{?dist}
 Summary:        A character picker for rofi 😀
 
 License:        MIT
@@ -62,6 +62,9 @@ mv %{buildroot}%{python3_sitelib}/share//man/man1/rofimoji.1 %{buildroot}%{_mand
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Sat Aug 14 2021 Major Hayden <major@mhtx.net> - 5.3.0-1
+- Update to 5.3.0
+
 * Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 5.2.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
 
