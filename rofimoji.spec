@@ -1,11 +1,11 @@
 %global         srcname     rofimoji
-Version:        5.3.0
+Version:        5.4.0
 %global         forgeurl    https://github.com/fdw/rofimoji
 %global         tag         %{version}
 %forgemeta
 
 Name:           %{srcname}
-Release:        2%{?dist}
+Release:        %autorelease
 Summary:        A character picker for rofi 😀
 
 License:        MIT
@@ -15,6 +15,7 @@ Source0:        %{forgesource}
 BuildArch:      noarch
 BuildRequires:  pyproject-rpm-macros
 BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 
 %py_provides    python3-picker
 
@@ -40,14 +41,18 @@ And you can use it to pick any weird character someone got into Unicode, too.
 %autosetup -n %{srcname}-%{version}
 sed -i -e '/^#!\//, 1d' src/picker/rofimoji.py
 
+
 %generate_buildrequires
 %pyproject_buildrequires
+
 
 %build
 %pyproject_wheel
 
+
 %install
 %pyproject_install
+
 
 # Move the man page from the python3 sitelib directory
 mkdir -vp %{buildroot}%{_mandir}/man1
@@ -55,41 +60,13 @@ mv %{buildroot}%{python3_sitelib}/share//man/man1/rofimoji.1 %{buildroot}%{_mand
 
 %pyproject_save_files picker
 
+
 %files -n %{srcname} -f %{pyproject_files}
 %license LICENSE
 %doc README.md
 %{_bindir}/rofimoji
 %{_mandir}/man1/%{name}.1*
 
+
 %changelog
-* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 5.3.0-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
-
-* Sat Aug 14 2021 Major Hayden <major@mhtx.net> - 5.3.0-1
-- Update to 5.3.0
-
-* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 5.2.0-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
-
-* Sat Jun 26 2021 Major Hayden <major@mhtx.net> - 5.2.0-1
-- New version 5.2.0.
-
-* Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 5.1.0-6
-- Rebuilt for Python 3.10
-
-* Tue Jun 01 2021 Major Hayden <major@mhtx.net> - 5.1.0-5
-- Package 'rofimoji' as a package without a python3-rofimoji subpackage.
-
-* Thu May 27 2021 Major Hayden <major@mhtx.net> - 5.1.0-4
-- Switched to using pyproject-rpm-macros.
-
-* Mon May 24 2021 Major Hayden <major@mhtx.net> - 5.1.0-3
-- Added extra X11/Wayland requirements.
-- Removed shebangs in rofimoji.py.
-- Added wildcard for future man page compression changes.
-
-* Fri May 14 2021 Major Hayden <major@mhtx.net> - 5.1.0-2
-- Remove check section since upstream has no tests.
-
-* Fri May 14 2021 Major Hayden <major@mhtx.net> - 5.1.0-1
-- Initial build.
+%autochangelog
