@@ -1,5 +1,5 @@
 %global         srcname     rofimoji
-Version:        5.4.0
+Version:        5.5.0
 %global         forgeurl    https://github.com/fdw/rofimoji
 %global         tag         %{version}
 %forgemeta
@@ -13,9 +13,7 @@ URL:            %{forgeurl}
 Source0:        %{forgesource}
 
 BuildArch:      noarch
-BuildRequires:  pyproject-rpm-macros
 BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
 
 %py_provides    python3-picker
 
