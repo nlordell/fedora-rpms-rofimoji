@@ -1,5 +1,5 @@
 %global         srcname     rofimoji
-Version:        5.6.0
+Version:        6.0.0
 %global         forgeurl    https://github.com/fdw/rofimoji
 %global         tag         %{version}
 %forgemeta
@@ -37,7 +37,6 @@ And you can use it to pick any weird character someone got into Unicode, too.
 
 %prep
 %autosetup -n %{srcname}-%{version}
-sed -i -e '/^#!\//, 1d' src/picker/rofimoji.py
 
 
 %generate_buildrequires
@@ -50,12 +49,6 @@ sed -i -e '/^#!\//, 1d' src/picker/rofimoji.py
 
 %install
 %pyproject_install
-
-
-# Move the man page from the python3 sitelib directory
-mkdir -vp %{buildroot}%{_mandir}/man1
-mv %{buildroot}%{python3_sitelib}/share//man/man1/rofimoji.1 %{buildroot}%{_mandir}/man1
-
 %pyproject_save_files picker
 
 
@@ -63,7 +56,6 @@ mv %{buildroot}%{python3_sitelib}/share//man/man1/rofimoji.1 %{buildroot}%{_mand
 %license LICENSE
 %doc README.md
 %{_bindir}/rofimoji
-%{_mandir}/man1/%{name}.1*
 
 
 %changelog
