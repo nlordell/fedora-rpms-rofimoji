@@ -27,3 +27,8 @@ jobs:
     allowed_committers:
       - packit
       - mhayden
+
+  - job: bodhi_update
+    trigger: commit
+    dist_git_branches:
+      - fedora-branched
