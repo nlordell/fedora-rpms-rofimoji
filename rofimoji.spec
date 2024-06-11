@@ -1,5 +1,5 @@
 %global         srcname     rofimoji
-Version:        6.3.0
+Version:        6.3.2
 %global         forgeurl    https://github.com/fdw/rofimoji
 %global         tag         %{version}
 %forgemeta
